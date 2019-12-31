@@ -1,3 +1,9 @@
+**UPDATE**
+
+I wanted to process many items with conditional input.  Taking the file `src/interactive_conditional_samples.py` and modifying it to take in a value delimited by a pipe `|`.
+
+---
+
 **Status:** Archive (code is provided as-is, no updates expected)
 
 # gpt-2
