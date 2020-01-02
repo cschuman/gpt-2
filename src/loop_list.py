@@ -80,7 +80,7 @@ def interact_model(
                 print('Prompt should not be empty!')
                 raw_text = input("Model prompt >>> ")
             items = raw_text.split('|')
-            for item in items
+            for item in items:
               print("---" + item + "---")
               context_tokens = enc.encode(item)
               generated = 0
@@ -92,8 +92,8 @@ def interact_model(
                       generated += 1
                       text = enc.decode(out[i])
                       print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
-                      print(text)
-              print("=" * 80)
+                      print(text.strip())
+              print("=" * 80, end=' ')
 
 if __name__ == '__main__':
     fire.Fire(interact_model)
