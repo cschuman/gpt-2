@@ -62,7 +62,7 @@ def interact_model(
         tf.set_random_seed(seed)
         output = sample.sample_sequence(
             hparams=hparams, length=length,
-            context=context,
+            context=context,***
             batch_size=batch_size,
             temperature=temperature, top_k=top_k, top_p=top_p
         )
@@ -97,7 +97,7 @@ def interact_model(
                       # print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
                       print("### SPECIMEN " + str(generated), end=' ')
                       print()
-                      print("***" + item + "*** " + text.strip(), end=' ')
+                      print("***" + item.strip() + "*** " + text.strip(), end=' ')
               print("=" * 80, end=' ')
               print()
 
