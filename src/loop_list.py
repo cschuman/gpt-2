@@ -81,7 +81,7 @@ def interact_model(
                 raw_text = input("Model prompt >>> ")
             items = raw_text.split('|')
             for item in items:
-              print("---" + item + "---")
+              print("## " + item, end=' ')
               context_tokens = enc.encode(item)
               generated = 0
               for _ in range(nsamples // batch_size):
@@ -91,8 +91,9 @@ def interact_model(
                   for i in range(batch_size):
                       generated += 1
                       text = enc.decode(out[i])
-                      print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
-                      print(text.strip())
+                      # print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
+                      print("### SPECIMEN " + str(generated), end=' ')
+                      print("***" + item + "*** " + text.strip(), end=' ')
               print("=" * 80, end=' ')
 
 if __name__ == '__main__':
