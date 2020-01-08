@@ -88,8 +88,10 @@ def sample_model(
             for i in range(batch_size):
                 generated += batch_size
                 text = enc.decode(out[i])
-                print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
+                print("-->")
                 print(text.strip())
+                print()
+                print()
                 previousOutput = text.strip()
 
 if __name__ == '__main__':
