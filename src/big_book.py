@@ -79,11 +79,13 @@ def sample_model(
         while nsamples == 0 or generated < nsamples:
             
             
+            context_tokens = enc.encode(previousOutput)
+            
             # out = sess.run(output)
             
             out = sess.run(output, feed_dict={
-                context: [previousOutput for _ in range(batch_size)]
-            })[:, len(previousOutput):]
+                context: [context_tokens for _ in range(batch_size)]
+            })[:, len(context_tokens):]
             
             for i in range(batch_size):
                 generated += batch_size
@@ -92,7 +94,7 @@ def sample_model(
                 print(text.strip())
                 print()
                 print()
-                previousOutput = text.strip()
+                previousOutput = text
 
 if __name__ == '__main__':
     fire.Fire(sample_model)
