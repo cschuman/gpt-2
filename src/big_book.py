@@ -55,13 +55,13 @@ def sample_model(
         raise ValueError("Can't get samples longer than window size: %s" % hparams.n_ctx)
 
     with tf.Session(graph=tf.Graph()) as sess:
-        
+        context = tf.placeholder(tf.int32, [batch_size, None])
         np.random.seed(seed)
         tf.set_random_seed(seed)
 
         output = sample.sample_sequence(
             hparams=hparams, length=length,
-            start_token=enc.encoder['<|endoftext|>'],
+            context=context,
             batch_size=batch_size,
             temperature=temperature, top_k=top_k, top_p=top_p
         )[:, 1:]
@@ -74,16 +74,16 @@ def sample_model(
 
         generated = 0
 
-        previousOutput = ""
+        previousOutput = "It was a dark and stormy night. "
 
         while nsamples == 0 or generated < nsamples:
             
-            if not previousOutput:
-                out = sess.run(output)
-            else:
-                out = sess.run(output, feed_dict={
-                    context: [previousOutput for _ in range(batch_size)]
-                })[:, len(previousOutput):]
+            
+            # out = sess.run(output)
+            
+            out = sess.run(output, feed_dict={
+                context: [previousOutput for _ in range(batch_size)]
+            })[:, len(previousOutput):]
             
             for i in range(batch_size):
                 generated += batch_size
