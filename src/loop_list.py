@@ -62,7 +62,7 @@ def interact_model(
         tf.set_random_seed(seed)
         output = sample.sample_sequence(
             hparams=hparams, length=length,
-            context=context,***
+            context=context,
             batch_size=batch_size,
             temperature=temperature, top_k=top_k, top_p=top_p
         )
