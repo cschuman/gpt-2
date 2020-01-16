@@ -95,9 +95,12 @@ def interact_model(
                       generated += 1
                       text = enc.decode(out[i])
                       # print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
+                      print()
+                      print()
                       print("### SPECIMEN " + str(generated), end=' ')
                       print()
                       print("***" + item.strip() + "*** " + text.strip(), end=' ')
+                      print()
               print("=" * 80, end=' ')
               print()
 
